@@ -1,0 +1,16 @@
+.scrollTable{
+    height: 435px;
+    overflow-y: scroll;
+    margin-top: -8px;
+    margin-right: -10px;
+}
+
+#fixScroll::-webkit-scrollbar{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+#fixScroll::-webkit-scrollbar-thumb{
+    background-color: #000000;
+    border-radius: 5px;
+}

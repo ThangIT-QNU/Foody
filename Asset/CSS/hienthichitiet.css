@@ -1,0 +1,51 @@
+.formHienThiSach {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.formHienThiSach table {
+  border: 1px solid #cdcbcb;
+  border-collapse: collapse;
+}
+
+.formHienThiSach table tr td {
+  width: 2px;
+  text-align: left;
+}
+
+.formHienThiSach table tr td .muaSach {
+  text-align: center;
+  width: 110px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #47a728;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 330px;
+}
+
+.formHienThiSach table tr td .muaSach a {
+  text-decoration: none;
+  color: white;
+}
+.formHienThiSach table tr td .quayLai {
+  text-align: center;
+  width: 110px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #f70f0f;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: -2px;
+  padding: auto;
+}
+.formHienThiSach table tr td .quayLai a {
+  text-decoration: none;
+  color: white;
+}
+
+.formHienThiSach table tr td .textHTSach {
+  overflow-y: scroll;
+  height: 140px;
+  text-align: justify;
+}
