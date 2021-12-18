@@ -1,6 +1,14 @@
 <?php 
     session_start();
            
+    if(!isset($_SESSION['taiKhoan'])) 
+    {  
+        echo "<script> 
+                alert('Vui lòng đăng nhập để mua hàng!');location.href = 'http://localhost/Foody/login.php';
+            </script>";
+        exit;
+    }
+    
     if (!isset($_SESSION['number'])) {
         $_SESSION['number'] = 0;
       }
