@@ -78,7 +78,7 @@
                         <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                           <a class='dropdown-item' href='http://localhost/Foody/UIClient/profile.php'> <i class='fas fa-user-cog'></i> Hồ sơ</a>
                           <a class='dropdown-item' href='http://localhost/Foody/UIClient/changePassword.php'><i class='fas fa-key'></i> Đổi mật khẩu</a>
-                          <a class='dropdown-item' href='http://localhost/Foody/index.php?btnDangXuat=1'><i class='fas fa-sign-out-alt'></i> Đăng xuất</a>
+                          <a class='dropdown-item' href='http://localhost/Foody/logout.php'><i class='fas fa-sign-out-alt'></i> Đăng xuất</a>
                         </div>
                       </div>";
                     else 
@@ -94,6 +94,15 @@
         <hr>
         <div class="container">
             <!-- ------------------------------------------------------------------------------------ -->
+
+            <?php 
+            include ('/xampp/htdocs/Foody/DBConnect/connect.php');
+            if(isset($_SESSION['idTaiKhoan']))
+            $user = $_SESSION['idTaiKhoan'];           
+            $sql = "SELECT * FROM taikhoan WHERE idTaiKhoan='$user' ";
+            $query = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($query);
+            ?>
             <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
                 <div class="mt-1">
                     <h3 class="text-center"><b>ĐỔI MẬT KHẨU</b></h3>
@@ -108,18 +117,19 @@
                     </div>
                     <div class="col-md-12">
                         <h5> <b>Tên tài khoản:</b> <span class="text-danger"> *</span></h5>
-                        <input placeholder="Vui lòng nhập tên tài khoản của bạn." required type="text"
-                            class="form-control" name="txtUserName">
+                        <input value="<?php echo $row['tenTaiKhoan']?>"
+                            placeholder="Vui lòng nhập tên tài khoản của bạn." required type="text" class="form-control"
+                            name="txtUserName">
                     </div>
                     <div class="col-md-12">
                         <h5> <b>Mật khẩu cũ:</b> <span class="text-danger"> *</span></h5>
-                        <input placeholder="Vui lòng nhập mật khẩu cũ" required class="form-control" type="password"
-                            name="txtPass">
+                        <input value="<?php echo $row['matKhau']?>" placeholder="Vui lòng nhập mật khẩu cũ" required
+                            class="form-control" type="password" name="txtPass">
                     </div>
                     <div class="col-md-12">
                         <h5> <b>Mật khẩu mới:</b> <span class="text-danger"> *</span></h5>
-                        <input placeholder="Vui lòng nhập mật khẩu mới" required class="form-control" name="txtPassNew"
-                            type="password">
+                        <input placeholder="Vui lòng nhập mật khẩu mới" required minlength="6" maxlength="11"
+                            class="form-control" name="txtPassNew" type="password">
                     </div>
                     <div class="col-md-12">
                         <label for=""></label>
