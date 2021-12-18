@@ -129,16 +129,18 @@ if (isset($_POST['btnRegister'])) {
                     class="login-form">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="text-uppercase"><b>Tên tài khoản</b></label>
-                        <input type="text" class="form-control" name="txtUserName" placeholder="Nhập tên tài khoản">
+                        <input type="text" class="form-control" required minlength="5" maxlength="20" name="txtUserName"
+                            placeholder="Nhập tên tài khoản">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text-uppercase"><b>Mật khẩu</b></label>
-                        <input type="password" class="form-control" name="txtPassWord" placeholder="Mật khẩu">
+                        <input type="password" class="form-control" required minlength="6" maxlength="11"
+                            name="txtPassWord" placeholder="Mật khẩu">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text-uppercase"><b>Xác Nhận Mật khẩu</b></label>
-                        <input type="password" class="form-control" name="txtRePassWord"
-                            placeholder="Xác nhận mật khẩu">
+                        <input type="password" class="form-control" required minlength="6" maxlength="11"
+                            name="txtRePassWord" placeholder="Xác nhận mật khẩu">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text-uppercase"><b>Họ Và Tên</b></label>
