@@ -125,22 +125,21 @@
                 <?php 
                     if(isset($_SESSION['cart'])){
                 ?>
-                <form action="" method="get">
-                    <div class="col-md-12">
-                        <table class="table table-bordered text-center">
-                            <center>
-                                <thead>
-                                    <tr class="bg-primary">
-                                        <th class="text-center">Hình Ảnh</th>
-                                        <th class="text-center">Tên Món Ăn</th>
-                                        <th class="text-center">Giá Tiền</th>
-                                        <th class="text-center">Số Lượng</th>
-                                        <th class="text-center">Thành Tiền</th>
-                                        <th class="text-center">Xóa</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+                <div class="col-md-12">
+                    <table class="table table-bordered text-center">
+                        <center>
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th class="text-center">Hình Ảnh</th>
+                                    <th class="text-center">Tên Món Ăn</th>
+                                    <th class="text-center">Giá Tiền</th>
+                                    <th class="text-center">Số Lượng</th>
+                                    <th class="text-center">Thành Tiền</th>
+                                    <th class="text-center">Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                         $sum = 0;
                                         if (isset($_SESSION['cart'])) 
                                         {
@@ -150,41 +149,41 @@
                                             $price = $value['count'] * $value['cost'];
                                             $sum = $sum += $price;
                                         ?>
-                                    <tr>
-                                        <td><img style="height:50px" width="50" ;
-                                                src="../Asset/IMAGE/<?php echo $value['img'] ?>"></td>
-                                        <td><?php echo $value['name'] ?></td>
-                                        <td><?php echo number_format($value['cost']) ?> VNĐ</td>
-                                        <td><?php echo $value['count'] ?></td>
-                                        <td><?php echo number_format($price) ?> VNĐ</td>
-                                        <td><a style="color:red" href="cart.php?idMonAn=<?php echo $key ?>"><i
-                                                    class="fas fa-trash-alt"></i></a></td>
-                                    </tr>
-                                    <?php }
+                                <tr>
+                                    <td><img style="height:50px" width="50" ;
+                                            src="../Asset/IMAGE/<?php echo $value['img'] ?>"></td>
+                                    <td><?php echo $value['name'] ?></td>
+                                    <td><?php echo number_format($value['cost']) ?> VNĐ</td>
+                                    <td><?php echo $value['count'] ?></td>
+                                    <td><?php echo number_format($price) ?> VNĐ</td>
+                                    <td><a style="color:red" href="cart.php?idMonAn=<?php echo $key ?>"><i
+                                                class="fas fa-trash-alt"></i></a></td>
+                                </tr>
+                                <?php }
                                         $_SESSION['number'] = $total;
                                     } ?>
-                                </tbody>
-                                <div class="cart-top">
-                                    <h4><b>Tổng tiền:</b><span style="color:red"> <b>
-                                                <?php echo number_format($sum)  ?> VNĐ
-                                            </b></span>
-                                        <a class="btn btn-danger" style="float:right" href="cart.php?delete=1">Xóa Giỏ
-                                            Hàng</a>
-                                    </h4><br>
-                                </div>
-                            </center>
-                        </table>
-                        <?php
+                            </tbody>
+                            <div class="cart-top">
+                                <h4><b>Tổng tiền:</b><span style="color:red"> <b>
+                                            <?php echo number_format($sum)  ?> VNĐ
+                                        </b></span>
+                                    <a class="btn btn-danger" style="float:right" href="cart.php?delete=1">Xóa Giỏ
+                                        Hàng</a>
+                                </h4><br>
+                            </div>
+                        </center>
+                    </table>
+                    <?php
                         if (isset($_SESSION['cart'])) {
                             if ($total == 0) {
                             unset($_SESSION['cart']);
                             } else {
                         ?>
-                        <h4><b>Tổng số lượng món ăn:</b> <span
-                                class="badge badge-secondary badge-pill"><?php echo $total ?></span></h4>
-                        <?php }
+                    <h4><b>Tổng số lượng món ăn:</b> <span
+                            class="badge badge-secondary badge-pill"><?php echo $total ?></span></h4>
+                    <?php }
                         } ?>
-                    </div>
+                </div>
             </div>
             <!-- ------------------------------------------------------------------------------------ -->
             <?php 
@@ -195,15 +194,17 @@
             $query = mysqli_query($conn, $sql);
             $row = mysqli_fetch_array($query);
             ?>
-            <div class="row p-t-20">
-                <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
-                    <div class="col-md-12">
-                        <div>
-                            <b> Lưu ý: những trường có dấu <span class="text-danger">(*) </span> đều bắt buộc phải
-                                nhập!!!</b>
-                            <br><br>
-                        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <b> Lưu ý: những trường có dấu <span class="text-danger">(*) </span> đều bắt buộc phải
+                            nhập!!!</b>
+                        <br><br>
                     </div>
+                </div>
+            </div>
+            <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
+                <div class="row">
                     <div class="col-md-6">
                         <h5> <b>Họ và tên:</b> <span class="text-danger"> *</span></h5>
                         <input value="<?php echo $row['hoVaTen']?>" required type="text" class="form-control"
@@ -230,15 +231,15 @@
                         <br>
                     </div>
                     <div class="col-md-6">
-                        <a class="btn btn-info float-left" href="http://localhost/Foody/index.php">Tiếp Tục Mua Hàng</a>
+                        <a class="btn btn-info float-left" href="http://localhost/Foody/index.php">Tiếp Tục Mua
+                            Hàng</a>
                     </div>
                     <div class="col-md-6">
                         <button name="btnOrder" type="submit" class="btn btn-success float-right">Xác Nhận Thanh
                             Toán</button>
                     </div>
-                </form>
-
-            </div>
+                </div>
+            </form>
         </div>
         <?php
         }   //end if
@@ -338,3 +339,65 @@
 
 </html>
 <?php ob_end_flush(); ?>
+
+<?php 
+    include ('/xampp/htdocs/Foody/DBConnect/connect.php');
+    if(isset($_POST['btnOrder'])){
+        //Lấy thông tin khách hàng từ form
+        $fullName = $_POST['txtFullName'];
+        $phone = $_POST['txtPhone'];
+        $address = $_POST['txtAddress'];
+        if(isset($_POST['txtEmail'])){
+            $email = $_POST['txtEmail'];
+        }else{
+            $email = '';
+        }
+        if(isset($_POST['txtNotes'])){
+            $notes = $_POST['txtNotes'];
+        }else{
+            $notes = '';
+        }
+        
+        $idKhachHanng = $_SESSION['idTaiKhoan'];
+        
+        // print_r( $_SESSION);
+        // die();
+        $sqlInsert = " INSERT INTO oder(idKhachHang, tongTien, tenKhachHang, email, diaChi, sdt, ghiChu, trangThai) 
+                        VALUES ('$idKhachHanng','$sum','$fullName','$email','$address','$phone', '$notes','0')";
+        $query = mysqli_query($conn, $sqlInsert);
+        $idOder = mysqli_insert_id($conn);
+        // if($query){
+        //     echo    "<script> 
+        //                 alert('Chúc mừng Quý khách đã đăng nhập thành công!');location.href = 'http://localhost/Foody/UIClient/cart.php';
+        //             </script>";
+        //         }
+        // else{
+        //     echo    "<script> 
+        //                 alert('Không thành công!');location.href = 'http://localhost/Foody/UIClient/cart.php';
+        //             </script>";
+        // }
+        foreach($_SESSION['cart'] as $key => $value)
+        {
+            $sqlOder = "INSERT INTO chitietoder(idOder, idMonAn, giaTien, soLuongMua, trangThai) 
+                            VALUES ('$idOder', '$key', '".$value['cost']."', '".$value['count']."','0')";
+            $queryOder = mysqli_query($conn,$sqlOder);
+            // print_r($queryOder);
+            // die();
+            if ($queryOder){
+                unset($_SESSION['cart']);
+                echo    "<script> 
+                        alert('Chúc mừng Quý khách đã thanh toán thành công! Chúng tôi sẽ chuyển hàng cho bạn trong thời gian sớm nhất.');
+                        location.href = 'http://localhost/Foody/UIClient/cart.php';
+                    </script>";
+                }
+            else{
+                echo    "<script> 
+                            alert('Thanh toán không thành công!');location.href = 'http://localhost/Foody/UIClient/cart.php';
+                        </script>";
+                }
+    }
+}
+    // session_unset();
+    // unset($_SESSION['cart']);
+
+?>
