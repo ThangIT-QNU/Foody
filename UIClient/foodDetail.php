@@ -107,14 +107,13 @@
                         $result = mysqli_query($conn, $sql) or die( mysqli_error($conn));
                         while ($row = $result->fetch_assoc()) {
                     ?>
-                    <div class="bug"></div>
                     <div class="formHienThiSach">
                         <center>
                             <form method="POST">
                                 <table>
                                     <tr>
-                                        <td rowspan="18">
-                                            <img style="width: 320px; height: 420px; "
+                                        <td rowspan="28">
+                                            <img style="width: 350px; height: 450px; "
                                                 src="../Asset/IMAGE/<?= $row['hinhAnh'] ?> " alt="IMAGE"><br><br>
                                         </td>
                                     </tr>
@@ -124,22 +123,23 @@
                                                 style="font-size: 20px;"><?= $row["tenMonAn"] ?></b></td>
                                     </tr>
                                     <tr>
-                                        <td class="title"><b>Thông Tin Món Ăn:</b></td>
-                                        <td>
+                                        <td><b>Thông Tin Món Ăn:</b></td>
+                                        <td style="padding-left: 20px;">
                                             <?= $row["thongTinMonAn"] ?>
                                         </td>
                                     </tr>
-                                    <td class="title" style="background-color: #efefef;"><b>Loại
+                                    <td style="background-color: #efefef;"><b>Loại
                                             Món Ăn:</b></td>
-                                    <td style="padding-left: 20px;"><?= $row["tenLoaiMonAn"] ?></td>
+                                    <td style="background-color: #fafafa;padding-left: 20px;">
+                                        <?= $row["tenLoaiMonAn"] ?></td>
                                     </tr>
                                     <tr>
-                                        <td class="title"><b>Số lượng:</b></td>
+                                        <td><b>Số lượng:</b></td>
                                         <td style="padding-left: 20px;"><?= $row["soLuong"] ?></td>
                                     </tr>
                                     <tr>
-                                        <td class="title" style="background-color: #efefef;"><b>Giá bán:</b></td>
-                                        <td style="background-color: #efefef; padding-left: 20px;">
+                                        <td style="background-color: #efefef;"><b>Giá bán:</b></td>
+                                        <td style="background-color: #fafafa; padding-left: 20px;">
                                             <?= number_format($row['giaBan']) ?> VNĐ
                                         </td>
                                     </tr>
@@ -169,7 +169,7 @@
 
             <!-- Hiển thị comment -->
             <div class="mt-1">
-                <div class="row p-t-20">
+                <div class="row">
                     <div class="col-md-12">
                         <?php
                         include ('/xampp/htdocs/Foody/DBConnect/connect.php');
@@ -200,79 +200,81 @@
                     </div>
                 </div>
                 <!-- Phân trang comment -->
-                <div class="float-left mt-4">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link"
-                                    href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>page=1">Trang
-                                    đầu</a></li>
-                            <?php
+                <div class="row">
+                    <div class="float-left mt-4">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item"><a class="page-link"
+                                        href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>page=1">Trang
+                                        đầu</a></li>
+                                <?php
                         for ($num = 1; $num <= $allPage; $num++) {
                             if ($num != $page) {
                                 if ($num > $page - 2 && $num < $page + 2) {
                         ?>
-                            <li class="page-item"><a class="page-link"
-                                    href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>&page=<?= $num ?>"><?= $num ?></a>
-                            </li>
-                            <?php
+                                <li class="page-item"><a class="page-link"
+                                        href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>&page=<?= $num ?>"><?= $num ?></a>
+                                </li>
+                                <?php
                                 }
                             } else {
                                 ?>
-                            <li class="page-item active"><a class="page-link"
-                                    href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>&page<?= $num ?>"><?= $num ?></a>
-                            </li>
-                            <?php }
+                                <li class="page-item active"><a class="page-link"
+                                        href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>&page<?= $num ?>"><?= $num ?></a>
+                                </li>
+                                <?php }
                         } ?>
-                            <li class="page-item"><a class="page-link"
-                                    href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>&page=<?= $allPage ?>">Trang
-                                    cuối</a></li>
-                        </ul>
-                    </nav>
+                                <li class="page-item"><a class="page-link"
+                                        href="http://localhost/Foody/UIClient/foodDetail.php?idMonAn=<?= $idMonAn?>&page=<?= $allPage ?>">Trang
+                                        cuối</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div><br><br>
             <!-- Form comment -->
             <div class="mt-1">
-                <div class="row p-t-20">
-                    <form class="ml-4 " action="" method="post">
-                        <div class="col-md-12" style="color:blue; height: 100px;">
-                            <h2 class="text-center"><b>FORM ĐÁNH GIÁ:</b></h2>
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-12 text-center" style="color:blue; height: 60px;">
+                            <h2><b>FORM ĐÁNH GIÁ:</b></h2>
+                        </div>
+                    </div>
+
+                    <?php
+                        include ('/xampp/htdocs/Foody/DBConnect/connect.php');
+                        if(isset($_SESSION['idTaikhoan']))
+                        $user = $_SESSION['idTaikhoan'];           
+                        $sql = "SELECT * FROM taikhoan WHERE idTaiKhoan='$user' ";
+                        $query = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($query);
+                    ?>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5> <b>E-mail:</b> <span class="text-danger"> *</span>
+                            </h5>
+                            <input type="email" class="form-control" placeholder="Vui lòng nhập email của bạn" required
+                                name="txtEmail">
+                        </div>
+                        <div class="col-md-4">
+                            <h5> <b>Chủ đề:</b> <span class="text-danger"> *</span></h5>
+                            <input placeholder="Vui lòng nhập chủ đề không quá 100 kí tự" maxlength="100" required
+                                class="form-control" type="text" name="txtTitle">
+                        </div>
+                        <div class="col-md-4">
+                            <h5> <b>Nội dung đánh giá:</b> <span class="text-danger">
+                                    *</span></h5>
+                            <input placeholder="Vui lòng nội dung đánh giá không quá 200 kí tự" maxlength="200" required
+                                type="text" class="form-control" name="txtInformation">
+                        </div>
+                        <div style="height: 30px;" class="col-md-12">
                         </div>
                         <div class="col-md-12">
-                            <?php
-                                include ('/xampp/htdocs/Foody/DBConnect/connect.php');
-                                if(isset($_SESSION['idTaikhoan']))
-                                $user = $_SESSION['idTaikhoan'];           
-                                $sql = "SELECT * FROM taikhoan WHERE idTaiKhoan='$user' ";
-                                $query = mysqli_query($conn, $sql);
-                                $row = mysqli_fetch_array($query);
-                            ?>
-                            <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <h5> <b>E-mail:</b> <span class="text-danger"> *</span>
-                                    </h5>
-                                    <input type="email" class="form-control" placeholder="Vui lòng nhập email" required
-                                        name="txtEmail">
-                                </div>
-                                <div class="col-md-4">
-                                    <h5> <b>Chủ đề:</b> <span class="text-danger"> *</span></h5>
-                                    <input placeholder="Vui lòng nhập chủ đề" required class="form-control" type="text"
-                                        name="txtTitle">
-                                </div>
-                                <div class="col-md-4">
-                                    <h5> <b>Nội dung đánh giá:</b> <span class="text-danger">
-                                            *</span></h5>
-                                    <input placeholder="Vui lòng nội dung đánh giá" required type="text"
-                                        class="form-control" name="txtInformation">
-                                </div>
-                                <div style="height: 30px;" class="col-md-12">
-                                </div>
-                                <div class="col-md-12">
-                                    <input class="btn btn-info mx-auto d-block" type="submit" name="btnSend"
-                                        value="Đánh giá">
-                                </div>
-                            </div>
-                    </form>
-                    <?php
+                            <input class="btn btn-info mx-auto d-block" type="submit" name="btnSend" value="Đánh giá">
+                        </div>
+                    </div>
+                </form>
+                <?php
                         include ('/xampp/htdocs/Foody/DBConnect/connect.php');
                         if (isset($_POST['btnSend'])) {
                             if (isset($_SESSION['taiKhoan'])) {
@@ -297,7 +299,6 @@
                                         </script>";
                         }
                     ?>
-                </div>
             </div>
         </div>
 
