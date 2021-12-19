@@ -18,21 +18,24 @@
             }
             else{
               echo "<script> 
-                        alert('Tài khoản or mật khẩu không đúng, vui lòng kiểm tra lại!');location.href = 'http://localhost/Foody/login.php';
+                        alert('Tài khoản or mật khẩu không đúng, vui lòng kiểm tra lại!');
+                        location.href = 'http://localhost/Foody/login.php';
                     </script>";
             }
             if (isset($_SESSION['quyen']))
             {
-              if ($_SESSION['quyen'] == '1'){
-                echo    "<script> 
-                            alert('Chúc mừng Admin đã đăng nhập thành công!');location.href = 'http://localhost/Foody/UIAdmin/index.php';
-                        </script>";
-                    }
-                    else{
-                        echo    "<script> 
-                                    alert('Chúc mừng Quý khách đã đăng nhập thành công!');location.href = 'http://localhost/Foody/index.php';
-                                </script>";
-                            }
+                if ($_SESSION['quyen'] == '1'){
+                    echo    "<script> 
+                                alert('Chúc mừng Admin đã đăng nhập thành công!');
+                                location.href = 'http://localhost/Foody/UIAdmin/index.php';
+                            </script>";
+                        }
+                else{
+                    echo    "<script> 
+                                alert('Chúc mừng Quý khách đã đăng nhập thành công!');
+                                location.href = 'http://localhost/Foody/index.php';
+                            </script>";
+                        }
             }
     }
     
@@ -103,6 +106,12 @@
                         <button type="submit" value="SEARCH" class="btn btn-primary" name="btnSearch"><i
                                 class="fas fa-search-plus"></i> Tìm kiếm</button>
                     </li>&nbsp;
+                    <?php
+                        if (isset($_GET['btnSearch'])) {
+                            $keySearch = $_GET['keySearch'];
+                            header("Location: http://localhost/Foody/UIClient/searchDish.php?key=$keySearch");
+                        }
+                    ?>
 
                     <li class="nav-item align-self-center ml-1">
                         <a style="width:110px;" href="http://localhost/Foody/UIClient/cart.php" class="btn btn-warning">
@@ -131,13 +140,6 @@
                 </ul>
             </div>
         </form>
-
-        <?php
-            if (isset($_GET['btnSearch'])) {
-                $keySearch = $_GET['keySearch'];
-                header("Location: http://localhost/Foody/UIClient/searchDish.php?key=$keySearch");
-            }
-        ?>
 
         <hr>
 
