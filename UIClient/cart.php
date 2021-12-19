@@ -378,10 +378,10 @@
         // }
         foreach($_SESSION['cart'] as $key => $value)
         {
-            $sqlOder = "INSERT INTO chitietoder(idOder, idMonAn, giaTien, soLuongMua, trangThai) 
-                            VALUES ('$idOder', '$key', '".$value['cost']."', '".$value['count']."','0')";
+            $sqlOder = "INSERT INTO chitietoder(idOder, idMonAn, giaTien, soLuongMua,tongTien, trangThai) 
+                            VALUES ('$idOder', '$key', '".$value['cost']."', '".$value['count']."','".$value['cost']*$value['count']."', '0')";
             $queryOder = mysqli_query($conn,$sqlOder);
-            // print_r($queryOder);
+            // print_r($sqlOder);
             // die();
             if ($queryOder){
                 unset($_SESSION['cart']);
@@ -394,9 +394,24 @@
                 echo    "<script> 
                             alert('Thanh toán không thành công!');location.href = 'http://localhost/Foody/UIClient/cart.php';
                         </script>";
+                        
                 }
     }
 }
+        // foreach($_SESSION['cart'] as $key => $value)
+        // {
+                
+        //     $sql="SELECT * FROM monan WHERE idMonAn=$key";
+        //     $rows=mysqli_query( $conn, $sql);
+        //     $row=mysqli_fetch_array($rows);
+        //     $ban = $row['daban']+$value['count'];
+        //     $sql="UPDATE monan SET daban='$ban' WHERE idMonAn=$key";
+        //     $sqlQuery = mysqli_query($conn,$sql);
+        //     print_r($sqlQuery);
+        //     die();
+        // }
+
+
     // session_unset();
     // unset($_SESSION['cart']);
 
