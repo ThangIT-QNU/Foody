@@ -80,7 +80,7 @@
         <hr>
 
         <div class="container">
-            <h4 class="text-center"><b> ADMINSTRATOR - ACCOUNT</b></h4>
+            <h4 class="text-center"><b> ADMINS - UPDATE ACCOUNT</b></h4>
             <div>
             </div>
             <div class="mt-2">
@@ -111,10 +111,6 @@
                         <label for="txtPassword" class="mt-2"><b> FULLNAME </b></label>
                         <input type="text" name="txtFullName" class="form-control"
                             value="<?php echo $row['hoVaTen']; ?>" placeholder="Enter FullName">
-
-                        <label for="txtPassword" class="mt-2"><b>PASSWORD</b></label>
-                        <input type="text" name="txtPassWord" class="form-control" value="<?php echo $row['matKhau'] ?>"
-                            placeholder="Enter Password">
 
                         <label for="txtEmail" class="mt-2"><b>EMAIL</b></label>
                         <input type="email" name="txtEmail" class="form-control" value="<?php echo $row['email'] ?>"
@@ -178,24 +174,15 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <hr>
-    <div class=" my-2">
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Chăm sóc khách hàng</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Ưu đãi</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Mã giảm giá</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Chính sách bảo mật</a>
-            </li>
-        </ul>
+        <div>
+            <hr>
+            <footer class="text-center text-lg-start bg-light text-muted">
+                <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2021 Copyright:
+                    <a class="text-reset fw-bold" href="#">Đinh Thành Thắng</a>
+                </div>
+            </footer>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

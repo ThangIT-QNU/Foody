@@ -98,16 +98,15 @@ img {
                 </div>
             </div>
         </div>
-    </div>
-
-    <hr>
-    <div>
-        <footer class="text-center text-lg-start bg-light text-muted">
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2021 Copyright:
-                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ThangIT_QNU</a>
-            </div>
-        </footer>
+        <div>
+            <hr>
+            <footer class="text-center text-lg-start bg-light text-muted">
+                <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2021 Copyright:
+                    <a class="text-reset fw-bold" href="#">Đinh Thành Thắng</a>
+                </div>
+            </footer>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

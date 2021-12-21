@@ -80,7 +80,7 @@
         <hr>
 
         <div class="container">
-            <h4 class="text-center"><b> ADMINSTRATOR - ACCOUNT</b></h4>
+            <h4 class="text-center"><b> ADMINS- ACCOUNT</b></h4>
             <div>
             </div>
             <div class="mt-2">
@@ -115,7 +115,6 @@
                         <tr>
                             <th class="align-middle">ID</th>
                             <th class="align-middle">USERNAME</th>
-                            <th class="align-middle">PASSWORD</th>
                             <th class="align-middle">FULLNAME</th>
                             <th class="align-middle">EMAIL</th>
                             <th class="align-middle">PHONE</th>
@@ -138,11 +137,11 @@
                                                 <div class="modal-body text-left  ">
                                                     <label for="txtUserName">ENTER NAME<span class="text-danger">(*Bắt
                                                             buộc)</span></label>
-                                                    <input type="text" class="form-control" id="txtUserName"
+                                                    <input type="text" class="form-control" required id="txtUserName"
                                                         name="txtUserName" placeholder="Enter UserName">
 
                                                     <label for="txtPassword" class=" mt-2">PASSWORD</label>
-                                                    <input type="text" class="form-control" id="txtPassWord"
+                                                    <input type="text" class="form-control" required id="txtPassWord"
                                                         name="txtPassWord" placeholder="Enter Password">
 
                                                     <label for="txtFullName" class=" mt-2">FULLNAME</label>
@@ -213,7 +212,6 @@
                         <tr>
                             <td class="align-middle"><?= $row['idTaiKhoan'] ?></td>
                             <td class="align-middle"><?= $row['tenTaiKhoan'] ?></td>
-                            <td class="align-middle"><?= $row['matKhau'] ?></td>
                             <td class="align-middle"><?= $row['hoVaTen'] ?></td>
                             <td class="align-middle"><?= $row['email'] ?></td>
                             <td class="align-middle"><?= $row['sdt'] ?></td>
@@ -269,24 +267,15 @@
                 </nav>
             </div>
         </div>
-    </div>
-
-    <hr>
-    <div class=" my-2">
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Chăm sóc khách hàng</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Ưu đãi</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Mã giảm giá</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Chính sách bảo mật</a>
-            </li>
-        </ul>
+        <div>
+            <hr>
+            <footer class="text-center text-lg-start bg-light text-muted">
+                <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2021 Copyright:
+                    <a class="text-reset fw-bold" href="#">Đinh Thành Thắng</a>
+                </div>
+            </footer>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

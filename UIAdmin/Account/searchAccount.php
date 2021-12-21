@@ -80,7 +80,7 @@
         <hr>
 
         <div class="container">
-            <h4 class="text-center"><b> ADMINSTRATOR - ACCOUNT</b></h4>
+            <h4 class="text-center"><b> ADMINS - SEARCH ACCOUNT</b></h4>
             <div>
             </div>
             <div class="mt-2">
@@ -253,16 +253,15 @@
                 </nav>
             </div>
         </div>
-    </div>
-
-    <hr>
-    <div class=" container mt-2">
-        <footer class="text-center text-lg-start bg-light text-muted">
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2021 Copyright:
-                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ThangIT_QNU</a>
-            </div>
-        </footer>
+        <div>
+            <hr>
+            <footer class="text-center text-lg-start bg-light text-muted">
+                <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2021 Copyright:
+                    <a class="text-reset fw-bold" href="#">Đinh Thành Thắng</a>
+                </div>
+            </footer>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

@@ -80,7 +80,7 @@
         <hr>
 
         <div class="container">
-            <h4 class="text-center">ADMINSTRATOR - ACCOUNT</h4>
+            <h4 class="text-center">ADMINS - DISH</h4>
             <div>
             </div>
             <div class="mt-2">
@@ -152,7 +152,7 @@
                                                             name="txtTenMon" placeholder="Nhập tên món">
                                                         <label for="imgMonAn" class="mt-2">IMAGE</label>
                                                         <input type="file" class="form-control-file" name="imgMonAn"
-                                                            id="imgMonAn">
+                                                            accept=".jpg, .jpeg, .png" id="imgMonAn">
                                                         <label for="txtThongTin" class="mt-2">INFORMATION</label>
                                                         <textarea name="txtThongTin" id="txtThongTin"
                                                             class="form-control" cols="30" rows="4" maxlength="500"
@@ -276,24 +276,15 @@
                     </nav>
                 </div>
             </div>
-        </div>
-
-        <hr>
-        <div class="my-2">
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Chăm sóc khách hàng</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ưu đãi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Mã giảm giá</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Chính sách bảo mật</a>
-                </li>
-            </ul>
+            <div>
+                <hr>
+                <footer class="text-center text-lg-start bg-light text-muted">
+                    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                        © 2021 Copyright:
+                        <a class="text-reset fw-bold" href="#">Đinh Thành Thắng</a>
+                    </div>
+                </footer>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
