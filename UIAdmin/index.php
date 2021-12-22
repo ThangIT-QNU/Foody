@@ -37,7 +37,7 @@ img {
             <ul class="nav">
                 <li class="nav-item align-self-center">
                     <a href="http://localhost/Foody/index.php">
-                        <img height="50px" width="160px" src="../Asset/Image/now.jpg">
+                        <img height="50px" width="110px" src="../Asset/Image/now.jpg">
                     </a>
                 </li>
                 <li class="nav-item align-self-center">
@@ -57,10 +57,11 @@ img {
                     <a class="nav-link" href="http://localhost/Foody/UIAdmin/Comment/comment.php">ĐÁNH GIÁ</a>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/Cart/carts.php">GIỎ HÀNG</a>
+                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/Bill/bills.php">ĐƠN HÀNG</a>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/Bill/bills.php">ĐƠN ĐẶT HÀNG</a>
+                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php">CHI TIẾT ĐƠN
+                        HÀNG</a>
                 </li>
                 <li class="nav-item align-self-center ml-1">
                     <?php

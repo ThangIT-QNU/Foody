@@ -378,8 +378,8 @@
         // }
         foreach($_SESSION['cart'] as $key => $value)
         {
-            $sqlOder = "INSERT INTO chitietoder(idOder, idMonAn, giaTien, soLuongMua,tongTien, trangThai) 
-                            VALUES ('$idOder', '$key', '".$value['cost']."', '".$value['count']."','".$value['cost']*$value['count']."', '0')";
+            $sqlOder = "INSERT INTO chitietoder(idOder, idMonAn, giaTien, soLuongMua,tongTien) 
+                            VALUES ('$idOder', '$key', '".$value['cost']."', '".$value['count']."','".$value['cost']*$value['count']."')";
             $queryOder = mysqli_query($conn,$sqlOder);
             // print_r($sqlOder);
             // die();

@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Tài Khoản</title>
+    <title>Admin - Đơn Hàng</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/Foody/Asset/CSS/styleAdmin.css">
@@ -31,7 +31,7 @@
             <ul class="nav">
                 <li class="nav-item align-self-center">
                     <a href="http://localhost/Foody/index.php">
-                        <img height="50px" width="110px" src="../../Asset/Image/now.jpg">
+                        <img height="50px" width="160px" src="../../Asset/Image/now.jpg">
                     </a>
                 </li>
                 <li class="nav-item align-self-center">
@@ -51,11 +51,10 @@
                     <a class="nav-link" href="http://localhost/Foody/UIAdmin/Comment/comment.php">ĐÁNH GIÁ</a>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/Bill/bills.php">ĐƠN HÀNG</a>
+                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/Cart/carts.php">GIỎ HÀNG</a>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php">CHI TIẾT ĐƠN
-                        HÀNG</a>
+                    <a class="nav-link" href="http://localhost/Foody/UIAdmin/Bill/bills.php">ĐƠN ĐẶT HÀNG</a>
                 </li>
                 <li class="nav-item align-self-center ml-1">
                     <?php
@@ -81,12 +80,12 @@
         <hr>
 
         <div class="container">
-            <h4 class="text-center"><b>ADMINSTRATOR - COMMENRT</b></h4>
+            <h4 class="text-center"><b> ADMINS - BILLS</b></h4>
             <div>
             </div>
             <div class="mt-2">
                 <div class="text-center my-1 bg-dark text-light" style="height: 46px; line-height: 46px;">
-                    <b>DANH SÁCH CÁC BÀI ĐÁNH GIÁ</b>
+                    <b>DANH SÁCH ĐƠN HÀNG</b>
                 </div>
                 <div>
                     <div class="container">
@@ -104,7 +103,7 @@
                         <?php
                         if (isset($_GET['btnSearch'])) {
                             $keySearch = $_GET['keySearch'];
-                            header("Location: http://localhost/Foody/UIAdmin/Comment/searchComment.php?key=$keySearch");
+                            header("Location: http://localhost/Foody/UIAdmin/Account/searchAccount.php?key=$keySearch");
                         }
                         ?>
                     </div>
@@ -115,54 +114,51 @@
                     <tbody>
                         <tr>
                             <th class="align-middle">ID</th>
-                            <th class="align-middle">Họ và tên</th>
-                            <th class="align-middle">E-Mail</th>
-                            <th class="align-middle">Tiêu đề</th>
-                            <th class="align-middle">Nội dung</th>
-                            <th class="align-middle">Ngày đánh giá</th>
-                            <th class="align-middle">Trạng thái</th>
-                            <th class="align-middle">Món ăn</th>
-                            <th colspan="2">
-                            </th>
+                            <th class="align-middle">ID USER</th>
+                            <th class="align-middle">SUM PRICE</th>
+                            <th class="align-middle">USERNAME</th>
+                            <th class="align-middle">ADDRESS</th>
+                            <th class="align-middle">SĐT</th>
+                            <th class="align-middle">NOTES</th>
+                            <th class="align-middle">DATE ODER</th>
+                            <th class="align-middle">STATUS</th>
                         </tr>
                         <?php
                         include ('/xampp/htdocs/Foody/DBConnect/connect.php');
-                        $soDongHT = 3;
+                        $soDongHT = 5;
                         $page = isset($_GET['page']) ? $_GET['page'] : 1;
                         $pageTT = ($page - 1) * $soDongHT;
-                        $allDong = mysqli_query($conn, "SELECT * FROM danhgia")->num_rows;
+                        $allDong = mysqli_query($conn, "SELECT * FROM oder")->num_rows;
                         $allPage = ceil($allDong / $soDongHT);
-                        $sql = "SELECT * FROM danhgia LIMIT $soDongHT OFFSET $pageTT";
+                        $sql = "SELECT * FROM oder LIMIT $soDongHT OFFSET $pageTT";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
                         <tr>
-                            <td class="align-middle"><?= $row['idDanhGia'] ?></td>
-                            <td class="align-middle"><?= $row['hoVaTen'] ?></td>
-                            <td class="align-middle"><?= $row['email'] ?></td>
-                            <td class="align-middle"><?= $row['tieuDe'] ?></td>
-                            <td class="align-middle"><?= $row['noiDung'] ?></td>
-                            <td class="align-middle">
-                                <?php
-                                    $date = date('d/m/Y - H:i:s',strtotime($row['ngayDanhGia']));
-                                    echo $date;
-                                ?>
-                            </td>
+                            <td class="align-middle"><?= $row['idOder'] ?></td>
+                            <td class="align-middle"><?= $row['idKhachHang'] ?></td>
+                            <td class="align-middle"><?= $row['tongTien'] ?></td>
+                            <td class="align-middle"><?= $row['tenKhachHang'] ?></td>
+                            <td class="align-middle"><?= $row['diaChi'] ?></td>
+                            <td class="align-middle"><?= $row['sdt'] ?></td>
+                            <td class="align-middle"><?= $row['ghiChu'] ?></td>
+                            <td class="align-middle"><?= $row['ngayOder'] ?></td>
                             <td class="align-middle">
                                 <?php 
-                                    if($row['trangThai'] == 0){
-                                ?>
-                                <a href="http://localhost/Foody/UIAdmin/Comment/updateComment.php?idDanhGia=<?= $row['idDanhGia'] ?>"
-                                    class="btn btn-info"><span class="fas fa-edit"></span> Xác Nhận </a>
+                                        if($row['trangThai'] == 0){
+                                    ?>
+                                <a href="http://localhost/Foody/UIAdmin/Bill/updateBills.php?idOder=<?= $row['idOder'] ?>"
+                                    class="btn btn-info"><span class="fas fa-edit"></span>
+                                    Giao Hàng</a>
                                 <?php 
-                                    }else echo "Đã Xác Nhận"
-                                ?>
+                                        }else echo "Đã Giao Hàng"
+                                    ?>
                             </td>
-                            <td class="align-middle"><?= $row['idMonAn'] ?></td>
-                            <td class="align-middle" style="width: 150px;">
-                                <a href="http://localhost/Foody/UIAdmin/Comment/deleteComment.php?idDanhGia=<?= $row['idDanhGia'] ?>"
-                                    onclick="return confirm('Bạn có muốn xoá tài khoản này không?');"
-                                    class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>&nbsp;DELETE</a>
+                            <td style="width: 150px;">
+                                <a href="http://localhost/Foody/UIAdmin/Bill/deleteBills.php?idOder=<?= $row['idOder'] ?>"
+                                    onclick="return confirm('Bạn có muốn xoá hóa đơn này không?');"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>&nbsp;DELETE
+                                </a>
                             </td>
                         </tr>
                         <?php } ?>
@@ -173,26 +169,26 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/Comment/comment.php?page=1">Trang đầu</a></li>
+                                href="http://localhost/Foody/UIAdmin/Bill/bills.php?page=1">Trang đầu</a></li>
                         <?php
                         for ($num = 1; $num <= $allPage; $num++) {
                             if ($num != $page) {
                                 if ($num > $page - 2 && $num < $page + 2) {
                         ?>
                         <li class="page-item"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/Comment/comment.php?page=<?= $num ?>"><?= $num ?></a>
+                                href="http://localhost/Foody/UIAdmin/Bill/bills.php?page=<?= $num ?>"><?= $num ?></a>
                         </li>
                         <?php
                                 }
                             } else {
                                 ?>
                         <li class="page-item active"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/Comment/comment.php?page=<?= $num ?>"><?= $num ?></a>
+                                href="http://localhost/Foody/UIAdmin/Bill/bills.php?page=<?= $num ?>"><?= $num ?></a>
                         </li>
                         <?php }
                         } ?>
                         <li class="page-item"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/Comment/comment.php?page=<?= $allPage ?>">Trang
+                                href="http://localhost/Foody/UIAdmin/Bill/bills.php?page=<?= $allPage ?>">Trang
                                 cuối</a></li>
                     </ul>
                 </nav>
