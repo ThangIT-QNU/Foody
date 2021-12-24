@@ -1,11 +1,18 @@
-<?php ob_start(); ?>
-<?php
+<?php ob_start();
     session_start();
-    //Đăng xuất
-    if(isset($_GET['btnDangXuat']))
+
+    //Check phân quyền
+    if (isset($_SESSION['quyen']))
     {
-        session_destroy();
-        echo "<script> location.href = 'http://localhost/Foody/index.php';</script>";
+        if ($_SESSION['quyen'] == '1'){
+            header('http://localhost/Foody/UIAdmin/index.php');
+        }
+        else{
+            echo    "<script> 
+                        alert('Bạn không có quyền truy cập trang này!');
+                        location.href = 'http://localhost/Foody/index.php';
+                    </script>";
+                }
     }
 ?>
 <!DOCTYPE html>
@@ -81,7 +88,7 @@
         <hr>
 
         <div class="container">
-            <h4 class="text-center">ADMINS - DISH</h4>
+            <h4 class="text-center"><b>ADMINS - DISH</b></h4>
             <div>
             </div>
             <div class="mt-2">
@@ -186,21 +193,23 @@
                                                     //
                                                     if ($nameImg != "") {
                                                         $sqlInsert1 = "INSERT INTO monan(idLoaiMonAn, tenMonAn, hinhAnh, thongTinMonAn, soLuong, giaBan) 
-                                                        VALUES( $perMis, '$tenMon', '$nameImg', '$thongTin', '$soLuong', '$giaBan)";
-                                                        $query = mysqli_query($conn, $sqlInsert1);
-                                                        if ($query){
+                                                        VALUES( '$perMis', '$tenMon', '$nameImg', '$thongTin', '$soLuong', '$giaBan')";
+                                                        $query1 = mysqli_query($conn, $sqlInsert1);
+                                                        // var_dump($query1);
+                                                        // exit();
+                                                        if ($query1){
                                                             $path = '../../ASSET/IMAGE/' . $_FILES['imgMonAn']['name'];
                                                             $diaChiIMG = $_FILES['imgMonAn']['tmp_name'];
                                                             move_uploaded_file($diaChiIMG, $path);
                                                             echo "<script>alert('Thêm món ăn thành công!');</script>";
                                                         }
                                                         else
-                                                            echo "<script>alert('ERROR!');</script>";
+                                                            echo "<script>alert('Thêm món ăn thất bại!');</script>";
                                                     } else {
                                                         $sqlInsert2 = "INSERT INTO monan(idLoaiMonAn, tenMonAn, thongTinMonAn, soLuong, giaBan) 
-                                                        VALUES($perMis, '.$tenMon.', '.$thongTin.', '.$soLuong.', $giaBan)";
-                                                        $query = mysqli_query($conn, $sqlInsert2);
-                                                        if ($query)
+                                                        VALUES('$perMis', '$tenMon', '$thongTin', '$soLuong', '$giaBan')";
+                                                        $query2 = mysqli_query($conn, $sqlInsert2);
+                                                        if ($query2)
                                                             echo "<script>alert('Thêm món ăn thành công!');</script>";
                                                         else
                                                             echo "<script>alert('ERROR!');</script>";

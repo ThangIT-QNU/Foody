@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Tài Khoản</title>
+    <title>Admin - Đơn Hàng</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/Foody/Asset/CSS/styleAdmin.css">
@@ -88,98 +88,98 @@
         <hr>
 
         <div class="container">
-            <h4 class="text-center"><b> ADMINS - UPDATE ACCOUNT</b></h4>
+            <h4 class="text-center"><b> ADMINS - BILLS</b></h4>
             <div>
             </div>
             <div class="mt-2">
-                <div class="text-center my-3 bg-dark text-light" style="height: 46px; line-height: 46px;">
-                    <b>CẬP NHẬT TÀI KHOẢN</b>
+                <div class="text-center my-1 bg-dark text-light" style="height: 46px; line-height: 46px;">
+                    <b>DANH SÁCH ĐƠN HÀNG</b>
                 </div>
                 <div>
-                    <?php
-                    include ('/xampp/htdocs/Foody/DBConnect/connect.php');
-                    if(isset($_GET['taiKhoan']))
-                    $user = $_GET['taiKhoan'];                 
-                    $sql = "SELECT * FROM taikhoan WHERE idTaiKhoan='$user' ";
-                    $query = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_array($query);
-                    // echo "<pre>";
-                    // print_r($row);
-                    // echo "</pre>";
-                    $per = $row['quyen'];
-                    ?>
-                    <form method="POST">
-                        <label for="txtId"><b>ID</b></label>
-                        <input type="text" class="form-control" value="<?php echo $row['idTaiKhoan']; ?>" disabled>
-
-                        <label for="txtUserName"><b> USERNAME </b></label>
-                        <input type="text" name="txtUserName" class="form-control"
-                            value="<?php echo $row['tenTaiKhoan'] ?>" disabled>
-
-                        <label for="txtPassword" class="mt-2"><b> FULLNAME </b></label>
-                        <input type="text" name="txtFullName" class="form-control"
-                            value="<?php echo $row['hoVaTen']; ?>" placeholder="Enter FullName">
-
-                        <label for="txtEmail" class="mt-2"><b>EMAIL</b></label>
-                        <input type="email" name="txtEmail" class="form-control" value="<?php echo $row['email'] ?>"
-                            placeholder="Enter Email">
-
-                        <label for="txtPhone" class="mt-2"><b>PHONE</b></label>
-                        <input type="text" name="txtPhone" class="form-control" value="<?php echo $row['sdt'] ?>"
-                            placeholder="Enter Phone">
-
-                        <label for="txtAddress" class="mt-2"><b>ADDRESS</b></label>
-                        <input type="text" name="txtAddress" class="form-control" value="<?php echo $row['diaChi'] ?>"
-                            placeholder="Enter Phone">
-
-                        <label for="txtPassword" class="mt-2"><b>PERMISSION</b></label>
-                        <select class="custom-select" id="sltQuyen" name="sltQuyen">
-                            <?php
-                            if ($per == 1) { ?>
-                            <option value="0">KHÁCH HÀNG</option>
-                            <option value="1" selected>ADMIN</option>
-                            <?php    } else { ?>
-                            <option value="0" selected>KHÁCH HÀNG</option>
-                            <option value="1">ADMIN</option>
-                            <?php } ?>
-                        </select>
-                        <div class="mt-3">
-                            <a href="http://localhost/Foody/UIAdmin/Account/account.php" class="btn btn-secondary"
-                                style="width: 110px;"><i class="fas fa-arrow-circle-left"></i>&nbsp;BACK</a>
-                            <button type="submit"
-                                onclick="return confirm('Bạn có muốn cập nhật thông tin tài khoản này không?');"
-                                class="btn btn-warning" style="width: 110px;" name="btnUpdate"> <i
-                                    class="fas fa-edit"></i>&nbsp;UPDATE
-                            </button>
-                        </div>
-                    </form>
-                    <?php
-                    if (isset($_POST['btnUpdate'])) {
-                        $fullName = $_POST['txtFullName'];
-                        $passWord = $_POST['txtPassWord'];
-                        $email = $_POST['txtEmail'];
-                        $phone = $_POST['txtPhone'];
-                        $address = $_POST['txtAddress'];
-                        $choosePer = $_POST['sltQuyen'];
-                        $sqlUpdate = "UPDATE taikhoan SET hoVaTen = '$fullName', matKhau = '$passWord', email = '$email', sdt = '$phone', diaChi = '$address', quyen = '$choosePer'
-                                WHERE idTaiKhoan = '$user' ";
-                               
-                        $query = mysqli_query($conn, $sqlUpdate);
-                        
-                        if ($query) {
-                                echo    "<script> 
-                                            alert('Bạn đã cập nhật thông tin tài khoản thành công!');
-                                            location.href = 'http://localhost/Foody/UIAdmin/Account/account.php';
-                                        </script>";
-                        }else{
-                            echo    "<script>
-                                        alert('Cập nhật thất bại');
-                                        location.href = 'http://localhost/Foody/UIAdmin/Account/account.php';
-                                    </script>";
-                    }
-                    }
-                    ?>
+                    <div class="container">
+                        <form method="GET">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input type="search" name="keySearch" required class="form-control mb-3"
+                                        placeholder="Enter Search" style="width: 980px;">
+                                </div>
+                                <div class="col-xs-6 ml-2">
+                                    <input type="submit" value="SEARCH" class="btn btn-primary" name="btnSearch">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
+            <div class="scrollTable " id="fixScroll">
+                <table class="table table-striped text-center">
+                    <tbody>
+                        <tr>
+                            <th class="align-middle">ID</th>
+                            <th class="align-middle">ID ODER</th>
+                            <th class="align-middle">ID MÓN ĂN</th>
+                            <th class="align-middle">PRICE</th>
+                            <th class="align-middle">QUANTITY</th>
+                            <th class="align-middle">SUM PRICE</th>
+                            <th class="align-middle">DATE CREATED</th>
+                        </tr>
+                        <?php
+                        include ('/xampp/htdocs/Foody/DBConnect/connect.php');
+                        $soDongHT = 5;
+                        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                        $pageTT = ($page - 1) * $soDongHT;
+                        $allDong = mysqli_query($conn, "SELECT * FROM chitietoder")->num_rows;
+                        $allPage = ceil($allDong / $soDongHT);
+                        $sql = "SELECT * FROM chitietoder LIMIT $soDongHT OFFSET $pageTT";
+                        $query = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_array($query)) {
+                        ?>
+                        <tr>
+                            <td class="align-middle"><?= $row['idChiTiet'] ?></td>
+                            <td class="align-middle"><?= $row['idOder'] ?></td>
+                            <td class="align-middle"><?= $row['idMonAn'] ?></td>
+                            <td class="align-middle"><?= $row['giaTien'] ?></td>
+                            <td class="align-middle"><?= $row['soLuongMua'] ?></td>
+                            <td class="align-middle"><?= $row['tongTien'] ?></td>
+                            <td style="width: 150px;">
+                                <a href="http://localhost/Foody/UIAdmin/Bill/deleteBills.php?idOder=<?= $row['idOder'] ?>"
+                                    onclick="return confirm('Bạn có muốn xoá hóa đơn này không?');"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>&nbsp;DELETE
+                                </a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-4">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link"
+                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=1">Trang đầu</a>
+                        </li>
+                        <?php
+                        for ($num = 1; $num <= $allPage; $num++) {
+                            if ($num != $page) {
+                                if ($num > $page - 2 && $num < $page + 2) {
+                        ?>
+                        <li class="page-item"><a class="page-link"
+                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=<?= $num ?>"><?= $num ?></a>
+                        </li>
+                        <?php
+                                }
+                            } else {
+                                ?>
+                        <li class="page-item active"><a class="page-link"
+                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=<?= $num ?>"><?= $num ?></a>
+                        </li>
+                        <?php }
+                        } ?>
+                        <li class="page-item"><a class="page-link"
+                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=<?= $allPage ?>">Trang
+                                cuối</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
         <div>

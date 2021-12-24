@@ -1,11 +1,18 @@
-<?php ob_start(); ?>
-<?php
+<?php ob_start();
     session_start();
-    //Đăng xuất
-    if(isset($_GET['btnDangXuat']))
+
+    //Check phân quyền
+    if (isset($_SESSION['quyen']))
     {
-        session_destroy();
-        echo "<script> location.href = 'http://localhost/Foody/index.php';</script>";
+        if ($_SESSION['quyen'] == '1'){
+            header('http://localhost/Foody/UIAdmin/index.php');
+        }
+        else{
+            echo    "<script> 
+                        alert('Bạn không có quyền truy cập trang này!');
+                        location.href = 'http://localhost/Foody/index.php';
+                    </script>";
+                }
     }
 ?>
 <!DOCTYPE html>
@@ -101,12 +108,6 @@
                                 </div>
                             </div>
                         </form>
-                        <?php
-                        if (isset($_GET['btnSearch'])) {
-                            $keySearch = $_GET['keySearch'];
-                            header("Location: http://localhost/Foody/UIAdmin/Account/searchAccount.php?key=$keySearch");
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
