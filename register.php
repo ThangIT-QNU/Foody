@@ -4,8 +4,8 @@ if (isset($_POST['btnRegister'])) {
     $userName   = $_POST['txtUserName'];
     $passWord   = $_POST['txtPassWord'];
     $rePassWord   = $_POST['txtRePassWord'];
-    $fullName = $_POST['txtFullName'];
-    $email  = $_POST['txtEmail'];
+    // $fullName = $_POST['txtFullName'];
+    // $email  = $_POST['txtEmail'];
 
     $sql = "SELECT * FROM taikhoan where tenTaiKhoan='".$userName."'"; 
     $result = mysqli_query($conn,$sql); 
@@ -14,12 +14,12 @@ if (isset($_POST['btnRegister'])) {
         if(mysqli_num_rows($result) >=1 ){
             echo    "<script> 
                         alert('Tên tài khoản tồn tại, xin vui lòng chọn tên khác!');
-                                location.href = 'http://localhost/Foody/login.php';
+                                location.href = 'http://localhost/Foody/register.php';
                     </script>";
         }
         else{                                     
-			$sqlInSert = "INSERT INTO taikhoan(tenTaiKhoan, matKhau, hoVaTen, quyen, email) 
-						  VALUES ('".$userName."','".$passWord."','".$fullName."','0','".$email."')";
+			$sqlInSert = "INSERT INTO taikhoan(tenTaiKhoan, matKhau, quyen) 
+						  VALUES ('".$userName."','".$passWord."','0')";
 			$result =  mysqli_query($conn,$sqlInSert);  
 			echo    "<script> 
 						alert('Chúc mừng bạn đã đăng ký thành công! Xin mời bạn đăng nhập để mua hàng');
@@ -27,7 +27,10 @@ if (isset($_POST['btnRegister'])) {
 					</script>";
 			}
     }
-    else echo " Mật Khẩu Không Trùng Khớp.";
+    else echo    "<script> 
+                    alert('Mật khẩu không trùng khớp, vui lòng kiểm tra lại!');
+                    location.href = 'http://localhost/Foody/register.php';
+                </script>";
 }    
 ?>
 
@@ -129,27 +132,27 @@ if (isset($_POST['btnRegister'])) {
                     class="login-form">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="text-uppercase"><b>Tên tài khoản</b></label>
-                        <input type="text" class="form-control" required minlength="5" maxlength="20" name="txtUserName"
+                        <input type="text" class="form-control" required maxlength="20" name="txtUserName"
                             placeholder="Nhập tên tài khoản">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text-uppercase"><b>Mật khẩu</b></label>
-                        <input type="password" class="form-control" required minlength="6" maxlength="11"
-                            name="txtPassWord" placeholder="Mật khẩu">
+                        <input type="password" class="form-control" required minlength="5" name="txtPassWord"
+                            placeholder="Mật khẩu">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text-uppercase"><b>Xác Nhận Mật khẩu</b></label>
-                        <input type="password" class="form-control" required minlength="6" maxlength="11"
-                            name="txtRePassWord" placeholder="Xác nhận mật khẩu">
+                        <input type="password" class="form-control" required minlength="5" name="txtRePassWord"
+                            placeholder="Xác nhận mật khẩu">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="exampleInputPassword1" class="text-uppercase"><b>Họ Và Tên</b></label>
                         <input type="text" class="form-control" name="txtFullName" placeholder="Nhập họ và tên của bạn">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="text-uppercase"><b>Email</b></label>
                         <input type="text" class="form-control" name="txtEmail" placeholder="Nhập email của bạn">
-                    </div>
+                    </div> -->
                     <div class="form-check">
                         <button style="width:120px; margin-right: 20px;" type="submit" class="btn btn-login float-right"
                             name="btnRegister">
@@ -169,7 +172,7 @@ if (isset($_POST['btnRegister'])) {
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="rounded" style="width: 910px; height: 620px;"
+                            <img class="rounded" style="width: 930px; height: 520px;"
                                 src="http://localhost/WebFood/ASSET/IMAGE/MonAn2.jpg">
                             <div class="carousel-caption d-none d-md-block">
                                 <div class="banner-text">
