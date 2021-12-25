@@ -8,6 +8,12 @@
     {
             $userName = $_POST['txtTenTaiKhoan'];
             $passWord = $_POST['txtMatKhau'];
+            if( isset($_POST['remember'])){
+                //Tạo cookie login
+                setcookie('txtTenTaiKhoan', $userName,time() + 999999);
+                setcookie('txtMatKhau', $passWord,time() + 999999);
+            }
+            
             $sql = "SELECT * FROM taikhoan WHERE tenTaiKhoan = '".$userName."' AND matKhau = '".$passWord."' ";
             $result = mysqli_query($conn, $sql);
             if ($num = mysqli_fetch_array($result)) 
@@ -148,7 +154,7 @@
                 <div class="col-md-4 login-sec">
                     <h2 class=" text-center" style="font-size: 22px;">Chào mừng bạn đến với NOW</h2>
                     <h2 class="text-center" style="font-size: 20px;"> <i class="fas fa-user-alt"></i> &nbsp;ĐĂNG NHẬP
-                        Ngay</h2>
+                        NGAY</h2>
                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="login-form">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="text-uppercase"><b>Tên tài khoản</b></label>
@@ -158,12 +164,12 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="text-uppercase"><b>Mật khẩu</b></label>
                             <input type="password" class="form-control" name="txtMatKhau" placeholder="Nhập mật khẩu"
-                                value="<?php echo $passWord ?>">
+                                value="<?php echo $passWord ?>"> <span class="show-btn">
                         </div>
 
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input <?php echo isset($check) ?> name="checkRemember" type="checkbox"
+                                <input <?php echo ($check)?"checked":"" ?> name="remember" type="checkbox"
                                     class="form-check-input"><b>Remember me?</b></input>
                             </label>
                             <button type="submit" class="btn btn-login float-right" name="btnDangNhap"><i
@@ -264,6 +270,19 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
+<script>
+const passField = document.querySelector("input");
+const showBtn = document.querySelector("span i");
+showBtn.onclick = (() => {
+    if (passField.type === "password") {
+        passField.type = "text";
+        showBtn.classList.add("hide-btn");
+    } else {
+        passField.type = "password";
+        showBtn.classList.remove("hide-btn");
+    }
+});
+</script>
 
 </html>
 <?php ob_end_flush(); ?>
