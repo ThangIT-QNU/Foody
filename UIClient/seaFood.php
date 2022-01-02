@@ -1,11 +1,5 @@
 <?php ob_start();
     session_start();
-    //Đăng xuất
-    if(isset($_GET['btnDangXuat']))
-    {
-        session_destroy();
-        echo "<script> location.href = 'http://localhost/Foody/index.php';</script>";
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

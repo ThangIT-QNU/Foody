@@ -49,7 +49,7 @@
                         </div>
                     </nav>
                     <li class="nav-item align-self-center ml-1">
-                        <input type="text" required name="keySearch" class="form-control" style="width: 400px;"
+                        <input type="text" name="keySearch" class="form-control" style="width: 400px;"
                             placeholder="Nhập món ăn muốn tìm kiếm">
                     </li>&nbsp;
                     <li class="nav-item align-self-center ml-1">
@@ -63,11 +63,11 @@
                                 $keySearch = $_GET['key'];
                                 if ($keySearch == "") {
                                     echo    "<script> 
-                                                alert('Vui lòng nhập tên món ăn để tìm kiếm!');location.href = 'http://localhost/Foody/index.php';
+                                                alert('Vui lòng nhập tên món ăn để tìm kiếm!');
                                             </script>";
                                 } 
                             else{
-                                header("Location: http://localhost/Foody/UIClient/searchDish.php?key=$keySearch");
+                                header("Location: http://localhost/Foody/UIClient/searchRice.php?key=$keySearch");
                             }
                         }
                     ?>
