@@ -150,7 +150,7 @@
                                                                 $query = mysqli_query($conn, $sql);
                                                                 while ($row = mysqli_fetch_array($query)) {
                                                                 ?>
-                                                            <option value="<?= $row['idLoaiMoAn'] ?>">
+                                                            <option value="<?= $row['idLoaiMonAn'] ?>">
                                                                 <?= $row['tenLoaiMonAn'] ?></option>
                                                             <?php } ?>
                                                         </select>
@@ -182,39 +182,51 @@
                                                     </div>
                                                 </form>
                                                 <?php
-                                                include ('/xampp/htdocs/Foody/DBConnect/connect.php');
-                                                if (isset($_POST['btnADD'])) {
-                                                $perMis = $_POST['sltLoaiMon'];
-                                                $tenMon = $_POST['txtTenMon'];
-                                                $nameImg = $_FILES['imgMonAn']['name'];
-                                                $thongTin = $_POST['txtThongTin'];
-                                                $soLuong = $_POST['txtSoLuong'];
-                                                $giaBan = $_POST['txtGia'];
-                                                    //
-                                                    if ($nameImg != "") {
-                                                        $sqlInsert1 = "INSERT INTO monan(idLoaiMonAn, tenMonAn, hinhAnh, thongTinMonAn, soLuong, giaBan) 
-                                                        VALUES( '$perMis', '$tenMon', '$nameImg', '$thongTin', '$soLuong', '$giaBan')";
-                                                        $query1 = mysqli_query($conn, $sqlInsert1);
-                                                        // var_dump($query1);
-                                                        // exit();
-                                                        if ($query1){
-                                                            $path = '../../ASSET/IMAGE/' . $_FILES['imgMonAn']['name'];
-                                                            $diaChiIMG = $_FILES['imgMonAn']['tmp_name'];
-                                                            move_uploaded_file($diaChiIMG, $path);
-                                                            echo "<script>alert('Thêm món ăn thành công!');</script>";
+                                                    include ('/xampp/htdocs/Foody/DBConnect/connect.php');
+                                                    if (isset($_POST['btnADD'])) {
+                                                    $perMis = $_POST['sltLoaiMon'];
+                                                    $tenMon = $_POST['txtTenMon'];
+                                                    $nameImg = $_FILES['imgMonAn']['name'];
+                                                    $thongTin = $_POST['txtThongTin'];
+                                                    $soLuong = $_POST['txtSoLuong'];
+                                                    $giaBan = $_POST['txtGia'];
+                                                        //
+                                                        if ($nameImg != "") {
+                                                            $sqlInsert = "INSERT INTO monan (idLoaiMonAn, tenMonAn, hinhAnh, thongTinMonAn, soLuong, giaBan) 
+                                                                            VALUES('$perMis', '$tenMon', '$nameImg', '$thongTin', '$soLuong', '$giaBan')";
+                                                            $query = mysqli_query($conn, $sqlInsert);
+                                                            // var_dump($query1);
+                                                            // exit();
+                                                            if ($query){
+                                                                $path = 'C:/xampp/htdocs/Foody/Asset/IMAGE/' . $_FILES['imgMonAn']['name'];
+                                                                $diaChiIMG = $_FILES['imgMonAn']['tmp_name'];
+                                                                move_uploaded_file($diaChiIMG, $path);
+                                                                echo "<script>  
+                                                                            alert('Chúc mừng bạn đã thêm món ăn thành công!');
+                                                                            location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
+                                                                    </script>";
+                                                            }
+                                                            else
+                                                                echo "<script>
+                                                                            alert('Thêm món ăn thất bại!');
+                                                                            location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
+                                                                    </script>";
+                                                        } else {
+                                                            $sqlInsert2 = "INSERT INTO monan (idLoaiMonAn, tenMonAn, thongTinMonAn, soLuong, giaBan) 
+                                                                            VALUES('$perMis', '$tenMon', '$thongTin', '$soLuong', '$giaBan')";
+                                                            $query2 = mysqli_query($conn, $sqlInsert2);
+                                                            if ($query2)
+                                                                echo "<script>
+                                                                            alert('Thêm món ăn thành công!');
+                                                                            location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
+                                                                        </script>";
+                                                            else
+                                                                echo "<script>
+                                                                            alert('ERROR!');
+                                                                            location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
+                                                                    </script>";
                                                         }
-                                                        else
-                                                            echo "<script>alert('Thêm món ăn thất bại!');</script>";
-                                                    } else {
-                                                        $sqlInsert2 = "INSERT INTO monan(idLoaiMonAn, tenMonAn, thongTinMonAn, soLuong, giaBan) 
-                                                        VALUES('$perMis', '$tenMon', '$thongTin', '$soLuong', '$giaBan')";
-                                                        $query2 = mysqli_query($conn, $sqlInsert2);
-                                                        if ($query2)
-                                                            echo "<script>alert('Thêm món ăn thành công!');</script>";
-                                                        else
-                                                            echo "<script>alert('ERROR!');</script>";
                                                     }
-                                                }
                                                 ?>
                                             </div>
                                         </div>
@@ -222,7 +234,7 @@
                                 </th>
                             </tr>
                             <?php
-                            $soDongHT = 2;
+                            $soDongHT = 10;
                             $page = isset($_GET['page']) ? $_GET['page'] : 1;
                             $pageTT = ($page - 1) * $soDongHT;
                             $allDong = mysqli_query($conn, "SELECT * FROM loaimonan, monan WHERE loaimonan.idLoaiMonAn = monan.idLoaiMonAn")->num_rows;

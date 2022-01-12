@@ -145,28 +145,36 @@
                         $gia = $_POST['txtGia'];
                         if($nameImg != ""){
                             $sql = "UPDATE monan SET tenMonAn='$tenMon', hinhAnh='$nameImg', thongTinMonAn='$thongTin', giaBan=$gia WHERE idMonAn=$idMonAn";
-                            $query = mysqli_query($con, $sql);
+                            $query = mysqli_query($conn, $sql);
                             if($query){
-                                $path = '../../Asset/IMAGE/' . $_FILES['imgMonAn']['name'];
+                                $path = 'C:/xampp/htdocs/Foody/Asset/IMAGE/' . $_FILES['imgMonAn']['name'];
                                 $diaChiIMG = $_FILES['imgMonAn']['tmp_name'];
                                 move_uploaded_file($diaChiIMG, $path);
-                                echo    "<script>alert('Cập nhật thông tin món ăn thành công!');
+                                echo    "<script>
+                                            alert('Cập nhật thông tin món ăn thành công!');
                                             location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
                                         </script>";
                             }
                             else
-                                echo "ERROR!";
+                            echo "<script>
+                                        alert('ERROR!');
+                                        location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
+                                </script>";
                         }
                         else{
                             $sqlUpdate = "UPDATE monan SET tenMonAn='$tenMon', thongTinMonAn='$thongTin', giaBan=$gia WHERE idMonAn=$idMonAn";
                             $query = mysqli_query($conn, $sqlUpdate);
                             if($query){
-                                echo    "<script>alert('Cập nhật thông tin món ăn thành công!');
+                                echo    "<script>
+                                            alert('Cập nhật thông tin món ăn thành công!');
                                             location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
                                         </script>";
                             }
                             else
-                                echo "ERROR!";
+                            echo "<script>
+                                        alert('ERROR!');
+                                        location.href = 'http://localhost/Foody/UIAdmin/Dish/dish.php';
+                                </script>";
                         }
                     }
                     ?>
