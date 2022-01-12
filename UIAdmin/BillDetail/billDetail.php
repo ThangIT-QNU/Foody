@@ -115,7 +115,6 @@
                 <table class="table table-striped text-center">
                     <tbody>
                         <tr>
-                            <th class="align-middle">ID</th>
                             <th class="align-middle">ID ODER</th>
                             <th class="align-middle">ID MÓN ĂN</th>
                             <th class="align-middle">PRICE</th>
@@ -125,22 +124,22 @@
                         </tr>
                         <?php
                         include ('/xampp/htdocs/Foody/DBConnect/connect.php');
-                        $soDongHT = 5;
-                        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                        $pageTT = ($page - 1) * $soDongHT;
-                        $allDong = mysqli_query($conn, "SELECT * FROM chitietoder")->num_rows;
-                        $allPage = ceil($allDong / $soDongHT);
-                        $sql = "SELECT * FROM chitietoder LIMIT $soDongHT OFFSET $pageTT";
+                        $sql = "SELECT * FROM chitietoder";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
                         <tr>
-                            <td class="align-middle"><?= $row['idChiTiet'] ?></td>
                             <td class="align-middle"><?= $row['idOder'] ?></td>
                             <td class="align-middle"><?= $row['idMonAn'] ?></td>
                             <td class="align-middle"><?= $row['giaTien'] ?></td>
                             <td class="align-middle"><?= $row['soLuongMua'] ?></td>
                             <td class="align-middle"><?= $row['tongTien'] ?></td>
+                            <td class="align-middle">
+                                <?php
+                                    $date = date('H:i:s - d/m/Y',strtotime($row['ngayTao']));
+                                    echo "$date";
+                                ?>
+                            </td>
                             <td style="width: 150px;">
                                 <a href="http://localhost/Foody/UIAdmin/Bill/deleteBills.php?idOder=<?= $row['idOder'] ?>"
                                     onclick="return confirm('Bạn có muốn xoá hóa đơn này không?');"
@@ -151,35 +150,6 @@
                         <?php } ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="text-center mt-4">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=1">Trang đầu</a>
-                        </li>
-                        <?php
-                        for ($num = 1; $num <= $allPage; $num++) {
-                            if ($num != $page) {
-                                if ($num > $page - 2 && $num < $page + 2) {
-                        ?>
-                        <li class="page-item"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=<?= $num ?>"><?= $num ?></a>
-                        </li>
-                        <?php
-                                }
-                            } else {
-                                ?>
-                        <li class="page-item active"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=<?= $num ?>"><?= $num ?></a>
-                        </li>
-                        <?php }
-                        } ?>
-                        <li class="page-item"><a class="page-link"
-                                href="http://localhost/Foody/UIAdmin/BillDetail/billDetail.php?page=<?= $allPage ?>">Trang
-                                cuối</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
         <div>

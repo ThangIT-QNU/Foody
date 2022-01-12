@@ -116,9 +116,8 @@
                     <tbody>
                         <tr>
                             <th class="align-middle">ID</th>
-                            <th class="align-middle">ID USER</th>
                             <th class="align-middle">SUM PRICE</th>
-                            <th class="align-middle">USERNAME</th>
+                            <th class="align-middle">FULLNAME</th>
                             <th class="align-middle">ADDRESS</th>
                             <th class="align-middle">SĐT</th>
                             <th class="align-middle">NOTES</th>
@@ -127,7 +126,8 @@
                         </tr>
                         <?php
                         include ('/xampp/htdocs/Foody/DBConnect/connect.php');
-                        $soDongHT = 5;
+                        $temp = 0;
+                        $soDongHT = 500;
                         $page = isset($_GET['page']) ? $_GET['page'] : 1;
                         $pageTT = ($page - 1) * $soDongHT;
                         $allDong = mysqli_query($conn, "SELECT * FROM oder")->num_rows;
@@ -138,19 +138,23 @@
                         ?>
                         <tr>
                             <td class="align-middle"><?= $row['idOder'] ?></td>
-                            <td class="align-middle"><?= $row['idKhachHang'] ?></td>
                             <td class="align-middle"><?= $row['tongTien'] ?></td>
                             <td class="align-middle"><?= $row['tenKhachHang'] ?></td>
                             <td class="align-middle"><?= $row['diaChi'] ?></td>
                             <td class="align-middle"><?= $row['sdt'] ?></td>
                             <td class="align-middle"><?= $row['ghiChu'] ?></td>
-                            <td class="align-middle"><?= $row['ngayOder'] ?></td>
                             <td class="align-middle">
+                                <?php
+                                    $date = date('H:i:s - d/m/Y',strtotime($row['ngayOder']));
+                                    echo "$date";
+                                ?>
+                            </td>
+                            <td style="width: 150px;">
                                 <?php 
                                         if($row['trangThai'] == 0){
                                     ?>
                                 <a href="http://localhost/Foody/UIAdmin/Bill/updateBills.php?idOder=<?= $row['idOder'] ?>"
-                                    class="btn btn-info"><span class="fas fa-edit"></span>
+                                    class="btn btn-info btn-sm"><span class="fas fa-edit"></span>
                                     Giao Hàng</a>
                                 <?php 
                                         }else echo "Đã Giao Hàng"
@@ -163,11 +167,19 @@
                                 </a>
                             </td>
                         </tr>
-                        <?php } ?>
+                        <?php 
+                            $temp = $temp += $row['tongTien'];
+                        } ?>
                     </tbody>
                 </table>
             </div>
-            <div class="text-center mt-4">
+
+            <div class="mt-2 text-center">
+                <div style="font-size: 17px;">
+                    <b>TỔNG DOANH THU: </b><span><?= number_format($temp) ?> VNĐ</span>
+                </div>
+            </div>
+            <!-- <div class="text-center mt-4">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item"><a class="page-link"
@@ -194,7 +206,7 @@
                                 cuối</a></li>
                     </ul>
                 </nav>
-            </div>
+            </div> -->
         </div>
         <div>
             <hr>
