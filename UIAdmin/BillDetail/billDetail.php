@@ -95,21 +95,6 @@
                 <div class="text-center my-1 bg-dark text-light" style="height: 46px; line-height: 46px;">
                     <b>DANH SÁCH ĐƠN HÀNG</b>
                 </div>
-                <div>
-                    <div class="container">
-                        <form method="GET">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <input type="search" name="keySearch" required class="form-control mb-3"
-                                        placeholder="Enter Search" style="width: 980px;">
-                                </div>
-                                <div class="col-xs-6 ml-2">
-                                    <input type="submit" value="SEARCH" class="btn btn-primary" name="btnSearch">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
             <div class="scrollTable " id="fixScroll">
                 <table class="table table-striped text-center">
