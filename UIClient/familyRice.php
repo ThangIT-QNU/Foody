@@ -63,11 +63,11 @@
                                 $keySearch = $_GET['key'];
                                 if ($keySearch == "") {
                                     echo    "<script> 
-                                                alert('Vui lòng nhập tên món ăn để tìm kiếm!');
+                                                alert('Vui lòng nhập tên món ăn để tìm kiếm!');location.href = 'http://localhost/Foody/index.php';
                                             </script>";
                                 } 
                             else{
-                                header("Location: http://localhost/Foody/UIClient/searchRice.php?key=$keySearch");
+                                header("Location: http://localhost/Foody/UIClient/searchDish.php?key=$keySearch");
                             }
                         }
                     ?>
