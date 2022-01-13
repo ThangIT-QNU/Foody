@@ -139,7 +139,7 @@
                         $pageTT = ($page - 1) * $soDongHT;
                         $allDong = mysqli_query($conn, "SELECT * FROM danhgia")->num_rows;
                         $allPage = ceil($allDong / $soDongHT);
-                        $sql = "SELECT * FROM danhgia LIMIT $soDongHT OFFSET $pageTT";
+                        $sql = "SELECT * FROM danhgia,monan LIMIT $soDongHT OFFSET $pageTT";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
@@ -160,12 +160,12 @@
                                     if($row['trangThai'] == 0){
                                 ?>
                                 <a href="http://localhost/Foody/UIAdmin/Comment/updateComment.php?idDanhGia=<?= $row['idDanhGia'] ?>"
-                                    class="btn btn-info"><span class="fas fa-edit"></span> Xác Nhận </a>
+                                    class="btn btn-info btn-sm"><span class="fas fa-edit"></span> Xác Nhận </a>
                                 <?php 
                                     }else echo "Đã Xác Nhận"
                                 ?>
                             </td>
-                            <td class="align-middle"><?= $row['idMonAn'] ?></td>
+                            <td class="align-middle"><?= $row['tenMonAn'] ?></td>
                             <td class="align-middle" style="width: 150px;">
                                 <a href="http://localhost/Foody/UIAdmin/Comment/deleteComment.php?idDanhGia=<?= $row['idDanhGia'] ?>"
                                     onclick="return confirm('Bạn có muốn xoá tài khoản này không?');"
