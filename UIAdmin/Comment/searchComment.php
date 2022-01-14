@@ -164,7 +164,7 @@
                                     if($row['trangThai'] == 0){
                                 ?>
                                 <a href="http://localhost/Foody/UIAdmin/Comment/updateComment.php?idDanhGia=<?= $row['idDanhGia'] ?>"
-                                    class="btn btn-info"><span class="fas fa-edit"></span> Xác Nhận </a>
+                                    class="btn btn-info btn-sm"><span class="fas fa-edit"></span> Xác Nhận </a>
                                 <?php 
                                     }else echo "Đã Xác Nhận"
                                 ?>

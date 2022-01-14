@@ -204,7 +204,8 @@
                             <h6 class="text-uppercase font-weight-bold">WEBSITE</h6>
                             <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                             <p>Website chuyên cung cấp thức ăn phù hợp với nhu cầu người dùng,
-                                đảm bảo chất lượng vệ sinh an toàn thực phẩm</p>
+                                đảm bảo chất lượng vệ sinh an toàn thực phẩm. Website này nhằm mục đích
+                                phục vụ cho sinh viên học tập môn Lập Trình Ứng Dụng Web</p>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                             <h6 class="text-uppercase font-weight-bold">MEMBERS</h6>

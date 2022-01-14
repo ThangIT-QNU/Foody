@@ -305,62 +305,55 @@
         <hr>
 
         <div class="mt-2">
-            <footer class="text-center text-lg-start bg-light text-muted">
-                <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                    <div class="me-5 d-none d-lg-block">
-                        <span></span>
+            <footer style="background-color:#F5F5F5;" class="page-footer font-small unique-color-dark">
+                <div style="#">
+                    <div class="container">
+                        <div class="row py-4 d-flex align-items-center">
+                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                                <h6 class="mb-0">Hãy kết nối với chúng tôi trên các mạng xã hội!</h6>
+                            </div>
+                            <div class="col-md-6 col-lg-7 text-center text-md-right">
+                                <a class="fb-ic"> <i class="fab fa-facebook-f white-text mr-4"> </i> </a>
+                                <a class="tw-ic"> <i class="fab fa-twitter white-text mr-4"> </i></a>
+                                <a class="gplus-ic"><i class="fab fa-google-plus-g white-text mr-4"> </i></a>
+                                <a class="li-ic"><i class="fab fa-linkedin-in white-text mr-4"> </i></a>
+                                <a class="ins-ic"><i class="fab fa-instagram white-text"> </i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <a href="" class="me-4 text-reset"><i class="fab fa-facebook-f"></i></a>
-                        <a href="" class="me-4 text-reset"><i class="fab fa-twitter"></i></a>
-                        <a href="" class="me-4 text-reset"><i class="fab fa-google"></i></a>
-                        <a href="" class="me-4 text-reset"><i class="fab fa-instagram"></i></a>
-                        <a href="" class="me-4 text-reset"><i class="fab fa-linkedin"></i> </a>
-                        <a href="" class="me-4 text-reset"> <i class="fab fa-github"></i></a>
-                    </div>
-                </section>
-
-                <div class="container text-center text-md-start mt-5">
+                </div>
+                <div class="container text-center text-md-left mt-5">
                     <div class="row mt-3">
                         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>Thông Tin Liên Hệ
-                            </h6>
-                            <p>Website cung cấp thức ăn bao ngon</p>
-                            <p><strong>Địa chỉ:</strong> 68 Hàm Nghi, Ngô Mây, QN</p>
-                            <p><strong>Email: </strong> dinhthanhthang@gmail.com</p>
-                            <p><strong>Điện thoại: </strong> 098 9725 994 </p>
-                            <p><strong>Facebook: </strong>https://www.facebook.com/thangit.com.vn/</p>
-                        </div>
-
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">Products</h6>
-                            <p><a href="#!" class="text-reset">Angular</a></p>
-                            <p><a href="#!" class="text-reset">React</a></p>
-                            <p><a href="#!" class="text-reset">Vue</a></p>
-                            <p><a href="#!" class="text-reset">Laravel</a></p>
+                            <h6 class="text-uppercase font-weight-bold">WEBSITE</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>Website chuyên cung cấp thức ăn phù hợp với nhu cầu người dùng,
+                                đảm bảo chất lượng vệ sinh an toàn thực phẩm. Website này nhằm mục đích
+                                phục vụ cho sinh viên học tập môn Lập Trình Ứng Dụng Web</p>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
-                            <p><a href="#!" class="text-reset">Pricing</a> </p>
-                            <p><a href="#!" class="text-reset">Settings</a></p>
-                            <p><a href="#!" class="text-reset">Orders</a></p>
-                            <p><a href="#!" class="text-reset">Help</a></p>
+                            <h6 class="text-uppercase font-weight-bold">MEMBERS</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>Đinh Thành Thắng</p>
+                            <p>Lê Phước Sáng</p>
+                            <p>Mai Thị Chi</p>
+                            <p>Trần Thị Thanh Tuyền</p>
+                            <p>Phan Thị Lam Tuyền</p>
                         </div>
                         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                            <p><i class="fas fa-envelope me-3"></i>info@example.com</p>
-                            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                            <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p><i class="fas fa-home mr-3"></i> Ngo May, Quy Nhon, Binh Dinh</p>
+                            <p><i class="fas fa-envelope mr-3"></i> thucphamonline@gmail.com</p>
+                            <p> <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
                         </div>
                     </div>
                 </div>
-                <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                    © 2021 Copyright:
-                    <a class="text-reset fw-bold" href="#">ThangIT_QNU</a>
+                <div class="footer-copyright text-center py-3">© 2021 Copyright:
+                    <a href="https://www.facebook.com/thangit.com.vn/">Đinh Thành Thắng</a>
                 </div>
             </footer>
-
         </div>
     </div>
 
