@@ -109,13 +109,13 @@
                         </tr>
                         <?php
                         include ('/xampp/htdocs/Foody/DBConnect/connect.php');
-                        $sql = "SELECT * FROM chitietoder";
+                        $sql = "SELECT * FROM chitietoder,monan WHERE chitietoder.idMonAn = monan.idMonAn";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
                         <tr>
                             <td class="align-middle"><?= $row['idOder'] ?></td>
-                            <td class="align-middle"><?= $row['idMonAn'] ?></td>
+                            <td class="align-middle"><?= $row['tenMonAn'] ?></td>
                             <td class="align-middle"><?= $row['giaTien'] ?></td>
                             <td class="align-middle"><?= $row['soLuongMua'] ?></td>
                             <td class="align-middle"><?= $row['tongTien'] ?></td>

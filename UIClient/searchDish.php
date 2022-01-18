@@ -157,7 +157,9 @@
                 </div>
             </div>
         </div>
-
+        <?php 
+            if($allDong > 0){
+        ?>
         <div class="text-center mt-4">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
@@ -165,28 +167,31 @@
                             href="http://localhost/Foody/UIClient/searchDish.php?key=<?= $keySearch ?>&page=1">Trang
                             đầu</a></li>
                     <?php
-                        for ($num = 1; $num <= $allPage; $num++) {
-                            if ($num != $page) {
-                                if ($num > $page - 2 && $num < $page + 2) {
-                    ?>
+                            for ($num = 1; $num <= $allPage; $num++) {
+                                if ($num != $page) {
+                                    if ($num > $page - 2 && $num < $page + 2) {
+                        ?>
                     <li class="page-item"><a class="page-link"
                             href="http://localhost/Foody/UIClient/searchDish.php?key=<?= $keySearch ?>&page=<?= $num ?>"><?= $num ?></a>
                     </li>
                     <?php
-                        }
-                        } else {
-                    ?>
+                            }
+                            } else {
+                        ?>
                     <li class="page-item active"><a class="page-link"
                             href="http://localhost/Foody/UIClient/searchDish.php?key=<?= $keySearch ?>&page=<?= $num ?>"><?= $num ?></a>
                     </li>
                     <?php }
-                        } ?>
+                            } ?>
                     <li class="page-item"><a class="page-link"
                             href="http://localhost/Foody/UIClient/searchDish.php?key=<?= $keySearch ?>&page=<?= $allPage ?>">Trang
                             cuối</a></li>
                 </ul>
             </nav>
         </div>
+        <?php
+            }
+        ?>
 
         <hr>
 

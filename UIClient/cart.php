@@ -140,15 +140,15 @@
                             </thead>
                             <tbody>
                                 <?php
-                                        $sum = 0;
-                                        if (isset($_SESSION['cart'])) 
-                                        {
+                                    $sum = 0;
+                                    if (isset($_SESSION['cart'])) 
+                                    {
                                         foreach ($_SESSION['cart'] as $key => $value) 
                                         {
                                             $total += $value['count'];
                                             $price = $value['count'] * $value['cost'];
                                             $sum = $sum += $price;
-                                        ?>
+                                ?>
                                 <tr>
                                     <td><img style="height:50px" width="50" ;
                                             src="../Asset/IMAGE/<?php echo $value['img'] ?>"></td>
@@ -373,7 +373,7 @@
         // }
         foreach($_SESSION['cart'] as $key => $value)
         {
-            $sqlOder = "INSERT INTO chitietoder(idOder, idMonAn, giaTien, soLuongMua,tongTien) 
+            $sqlOder = "INSERT INTO chitietoder(idOder, idMonAn, giaTien, soLuongMua, tongTien) 
                             VALUES ('$idOder', '$key', '".$value['cost']."', '".$value['count']."','".$value['cost']*$value['count']."')";
             $queryOder = mysqli_query($conn,$sqlOder);
             // print_r($sqlOder);

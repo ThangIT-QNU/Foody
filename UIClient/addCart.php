@@ -17,15 +17,23 @@
     if (isset($_GET['idMonAn'])) {
       
       $idMonAn = $_GET['idMonAn'];
-      $sql = "SELECT * FROM monan where idMonAn =".$idMonAn;
+      $sql = "SELECT * FROM monan where idMonAn =".$idMonAn." ";
       $result = mysqli_query($conn,$sql);
-      $row = mysqli_fetch_array($result,1);
-      if (mysqli_num_rows($result)>0) {
+
+      // Lấy tất cả các mảng của biến $result
+      $row = mysqli_fetch_array($result);
+      //Lấy tổng dòng (kết quả) xem thử có bao nhiêu kết quả
+      if (mysqli_num_rows($result) > 0) {
+        //Kiểm xem session[cart](giỏ hàng) có tồn tại hay không
         if (isset($_SESSION['cart'])) {
+          // Có 2 session  $_SESSION['cart'](), $_SESSION['number']
+          //Kiểm tra xem idMonAn đã có trong giỏ hàng hay chưa
           if (isset($_SESSION['cart'][$idMonAn])) {
+            //Nếu có rồi thì nó +=1
             $_SESSION['cart'][$idMonAn]['count'] +=1;
             $_SESSION['number'] +=1 ;
           }else{
+            //Nếu idMonAn chưa có thì mặt định =1
             $_SESSION['cart'][$idMonAn]['count'] =1;
             $_SESSION['number'] +=1 ;
           }
@@ -37,6 +45,7 @@
                             location.href = 'http://localhost/Foody/UIClient/cart.php';
                         </script>";
         }else{
+          //Nếu chưa có $_SESSION['cart'] thì tạo session cart và các giá trị trong session 
           $_SESSION['cart'][$idMonAn]['count'] =1;
           $_SESSION['number'] +=1 ;
           $_SESSION['cart'][$idMonAn]['img'] = $row['hinhAnh'];
